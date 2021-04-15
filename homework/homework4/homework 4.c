@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-#include "wow/library.h"
+#include "library.h"
 #define NUMBER '0'
 #define MAXOP 100
 
@@ -16,7 +16,7 @@ int main(void){
 int num;
 char s[MAXOP];
 double firstn, a;
-double variable[26];
+double variable[40];
 
 while((num = getop(s)) != EOF){
         switch(num)
@@ -54,6 +54,6 @@ while((num = getop(s)) != EOF){
                             printf("error: unknown command %s\n",s);
                         break;
 }a=num;
-
+return 0;
 }
 }
