@@ -1,3 +1,4 @@
+*/solo es de copilar jiji/
 #include <assert.h>  
 #include <ctype.h>   
 #include <stdio.h>   
