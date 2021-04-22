@@ -1,174 +1,187 @@
-#include <assert.h> 
-#include <ctype.h>  
-#include <stdio.h>  
+#include <assert.h>  
+#include <ctype.h>   
+#include <stdio.h>   
 #include <stdlib.h>  
 #include <unistd.h>  
+#define ERROR_MINA_ENCONTRADA 1
+#define ERROR_ESPACIO_YA_DESCUBIERTO 2
+#define ERROR_NINGUNO 3
 
-#define OOPS_TRY_WITH_ANOTHER 1
-#define OOPS_MINA 2
-#define OOPS_NONE 3
-
-#define COLUMNS 10
-#define ROWS 10
-#define UNDISCOVERED_SPACE '#'
-#define OPEN_SPACE ' '
+#define COLUMNAS 10
+#define FILAS 10
+#define ESPACIO_SIN_DESCUBRIR '#'
+#define ESPACIO_DESCUBIERTO ' '
 #define MINA '*'
-#define AMOUNT_MINAS  8
-#define DEBUG 0
-int ObtaneMinasClose(int row, int column, char table[ROWS][COLUMNS]) {
-  int count = 0, FirstRow, LastRow, FirstColumn, LastColumn;
-  if (row <= 0) {
-    FirstRow = 0;
+#define CANTIDAD_MINAS \
+  5  
+#define DEBUG 0  
+
+int obtenerMinasCercanas(int fila, int columna, char tablero[FILAS][COLUMNAS]) {
+  int conteo = 0, filaInicio, filaFin, columnaInicio, columnaFin;
+  if (fila <= 0) {
+    filaInicio = 0;
   } else {
-    FirstRow = row - 1;
+    filaInicio = fila - 1;
   }
-  if (row + 1 >= ROWS) {
-    LastRow = ROWS - 1;
+
+  if (fila + 1 >= FILAS) {
+    filaFin = FILAS - 1;
   } else {
-    LastRow = row + 1;
+    filaFin = fila + 1;
   }
-  if (column <= 0) {
-    FirstColumn = 0;
+
+  if (columna <= 0) {
+    columnaInicio = 0;
   } else {
-    FirstColumn = column - 1;
+    columnaInicio = columna - 1;
   }
-   if (column + 1 >= COLUMNS) {
-    LastColumn = COLUMNS - 1;
+  if (columna + 1 >= COLUMNAS) {
+    columnaFin = COLUMNAS - 1;
   } else {
-    LastColumn = column + 1;
+    columnaFin = columna + 1;
   }
-  int a;
-  for (a = FirstRow; a <= LastRow; a++) {
-    int b;
-    for (b = FirstColumn; b <= LastColumn; b++) {
-      if (table[a][b] == MINA) {
-        count++;
+  int m;
+  for (m = filaInicio; m <= filaFin; m++) {
+    int l;
+    for (l = columnaInicio; l <= columnaFin; l++) {
+      if (tablero[m][l] == MINA) {
+        conteo++;
       }
     }
   }
-  return count;
+  return conteo;
 }
 
-int Random(int min, int max) {
-  return min + rand() / (RAND_MAX / (max - min + 1) + 1);
+int aleatorioEnRango(int minimo, int maximo) {
+  return minimo + rand() / (RAND_MAX / (maximo - minimo + 1) + 1);
 }
-
-void StartTable(char table[ROWS][COLUMNS]) {
-  int b;
-  for (b = 0; b < ROWS; b++) {
-    int a;
-    for (a = 0; a < COLUMNS; a++) {
-      table[b][a] = UNDISCOVERED_SPACE;
+void iniciarTablero(char tablero[FILAS][COLUMNAS]) {
+  int l;
+  for (l = 0; l < FILAS; l++) {
+    int m;
+    for (m = 0; m < COLUMNAS; m++) {
+      tablero[l][m] = ESPACIO_SIN_DESCUBRIR;
     }
   }
 }
 
-      void HereMina(int row, int column, char table[ROWS][COLUMNS]) {
-  table[row][column] = MINA;
+void colocarMina(int fila, int columna, char tablero[FILAS][COLUMNAS]) {
+  tablero[fila][columna] = MINA;
 }
-      void HereMinaRandom(char table[ROWS][COLUMNS]) {
-  int b; 
-  for (b = 0; b < AMOUNT_MINAS; b++) 
-  {
-    int row = Random(0, ROWS - 1);
-    int column = Random(0, COLUMNS - 1);
-    HereMina(row, column, table);
+
+
+void colocarMinasAleatoriamente(char tablero[FILAS][COLUMNAS]) {
+  int l;
+  for (l = 0; l < CANTIDAD_MINAS; l++) {
+    int fila = aleatorioEnRango(0, FILAS - 1);
+    int columna = aleatorioEnRango(0, COLUMNAS - 1);
+    colocarMina(fila, columna, tablero);
   }
 }
 
-void PrintHeader() {
-  int a;
-  for (a = 0; a <= COLUMNS; a++) {
+void imprimirSeparadorEncabezado() {
+  int m;
+  for (m = 0; m <= COLUMNAS; m++) {
     printf("----");
-    if (a + 2 == COLUMNS) {
+    if (m + 2 == COLUMNAS) {
       printf("-");
     }
-}
+  }
   printf("\n");
 }
-void PrintRowSeparator() {
-  int a;
-  for (a = 0; a <= COLUMNS; a++) {
+
+void imprimirSeparadorFilas() {
+  int m;
+  for (m = 0; m <= COLUMNAS; m++) {
     printf("+---");
-    if (a == COLUMNS) {
+    if (m == COLUMNAS) {
       printf("+");
     }
   }
   printf("\n");
 }
 
-void PUTHeader() {
-  PUTHeader();
+void imprimirEncabezado() {
+  imprimirSeparadorEncabezado();
   printf("|   ");
-  int b;
-  for (b = 0; b < COLUMNS; b++) {
-    printf("| %d ", b + 1);
-    if (b + 1 == COLUMNS) {
+  int l;
+  for (l = 0; l < COLUMNAS; l++) {
+    printf("| %d ", l + 1);
+    if (l + 1 == COLUMNAS) {
       printf("|");
     }
   }
   printf("\n");
 }
 
-              char WholeCharacter(int num) {
-  return num + '0';
-}      
-void PrintTable(char table[ROWS][COLUMNS], int mina) {
-  PrintHeader();
-  PrintRowSeparator();
-  char letter = 'A';
-  int b;
-        for (b = 0; b < ROWS; b++) {
-  int a;
-    printf("| %c ", letter);
-    letter++;
-        for (a = 0; a < COLUMNS; a++) {
+char enteroACaracter(int numero) {
+  return numero + '0';
+}
 
-  char True = UNDISCOVERED_SPACE;
-      char ActualLetter = table[b][a];
-      if (ActualLetter == MINA) 
-	  {
-        True = UNDISCOVERED_SPACE;}
-	  else if (ActualLetter == OPEN_SPACE) {
-   int minaClose = ObtaneMinasClose(b, a, table);
-        True = WholeCharacter(minaClose);
-	}
-        
-if (ActualLetter == MINA && (DEBUG || mina)) {
-        True = MINA;
+void imprimirTablero(char tablero[FILAS][COLUMNAS], int deberiaMostrarMinas) {
+  imprimirEncabezado();
+  imprimirSeparadorEncabezado();
+  char letra = 'A';
+  int l;
+  for (l = 0; l < FILAS; l++) {
+    int m;
+  
+    printf("| %c ", letra);
+    letra++;
+    for (m = 0; m < COLUMNAS; m++) {
+  
+      char verdaderaLetra = ESPACIO_SIN_DESCUBRIR;
+      char letraActual = tablero[l][m];
+      if (letraActual == MINA) {
+        verdaderaLetra = ESPACIO_SIN_DESCUBRIR;
+      } else if (letraActual == ESPACIO_DESCUBIERTO) {
+   
+        int minasCercanas = obtenerMinasCercanas(l, m, tablero);
+        verdaderaLetra = enteroACaracter(minasCercanas);
       }
-      printf("| %c ", ActualLetter);
-      if (a + 1 == COLUMNS) {
+    
+      if (letraActual == MINA && (DEBUG || deberiaMostrarMinas)) {
+        verdaderaLetra = MINA;
+      }
+      printf("| %c ", verdaderaLetra);
+      if (m + 1 == COLUMNAS) {
         printf("|");
       }
     }
     printf("\n");
-    PrintRowSeparator();
+    imprimirSeparadorFilas();
   }
-} int Open(char RowLETTER, int column, char table[ROWS][COLUMNS]) {
-RowLETTER = toupper(RowLETTER);
-column--;
+}
 
-int row = RowLETTER - 'A';
-  assert(column < COLUMNS && column >= 0);
-  assert(row < ROWS && row >= 0);
-  if (table[row][column] == MINA) {
-    return OOPS_MINA;
+
+int abrirCasilla(char filaLetra, int columna, char tablero[FILAS][COLUMNAS]) {
+  
+  filaLetra = toupper(filaLetra);
+  
+  columna--;
+  
+  int fila = filaLetra - 'A';
+  assert(columna < COLUMNAS && columna >= 0);
+  assert(fila < FILAS && fila >= 0);
+  if (tablero[fila][columna] == MINA) {
+    return ERROR_MINA_ENCONTRADA;
   }
-  if (table[row][column] == OPEN_SPACE) {
-    return OOPS_TRY_WITH_ANOTHER;
+  if (tablero[fila][columna] == ESPACIO_DESCUBIERTO) {
+    return ERROR_ESPACIO_YA_DESCUBIERTO;
   }
-     table[row][column] = OPEN_SPACE;
-    return OOPS_NONE;
-{
-	
-	int NoSpace(char table[ROWS][COLUMNS]) {
-  int b;
-  for (b = 0; b < ROWS; b++) {
-    int a;
-    for (a = 0; a < COLUMNS; a++) {
-      char actual = table[b][a];
-      if (actual == UNDISCOVERED_SPACE) {
+  
+  tablero[fila][columna] = ESPACIO_DESCUBIERTO;
+  return ERROR_NINGUNO;
+}
+
+
+int noHayCasillasSinAbrir(char tablero[FILAS][COLUMNAS]) {
+  int l;
+  for (l = 0; l < FILAS; l++) {
+    int m;
+    for (m = 0; m < COLUMNAS; m++) {
+      char actual = tablero[l][m];
+      if (actual == ESPACIO_SIN_DESCUBRIR) {
         return 0;
       }
     }
@@ -176,41 +189,36 @@ int row = RowLETTER - 'A';
   return 1;
 }
 
-int main(){
-	printf("**MINESWEEPER**");
-	char table [ROWS] [COLUMNS];
-    int mina=0;
-	
-	srand(getpid());
-	StartTable(table);
-	HereMinaRandom(table);
-	}
-while (1){
-	PrintTable(table, MINA);
-	if (MINA)
-	break;	
-}
-int column;
-char row;
-printf("introduce the row: ");
-scanf(" %c", & row);
-printf("introduce the column: ");
-scanf(" %d", & column);
-
-int status= Open(row, column, table);
-if (NoSpace(table)){
-	printf("congratulations! you are the winner B)\n");
-     int mina=1;
-	}
-else if (status== OOPS_TRY_WITH_ANOTHER )
-{
-printf("you already open that\n");
-}
-else if (status== OOPS_MINA )
-{
-printf("haha you lose\n");
-int mina=1;
+int main() {
+  printf("** minesweeper **");
+  char tablero[FILAS][COLUMNAS];
+  int deberiaMostrarMinas = 0;
+ 
+  srand(getpid());
+  iniciarTablero(tablero);
+  colocarMinasAleatoriamente(tablero);
+  
+  while (1) {
+    imprimirTablero(tablero, deberiaMostrarMinas);
+    if (deberiaMostrarMinas) {
+      break;
+    }
+    int columna;
+    char fila;
+    printf("introduce the row:  ");
+    scanf(" %c", &fila);
+    printf("introduce the column: ");
+    scanf("%d", &columna);
+    int status = abrirCasilla(fila, columna, tablero);
+    if (noHayCasillasSinAbrir(tablero)) {
+      printf("congratulations! you are the winner B)\n");
+      deberiaMostrarMinas = 1;
+    } else if (status == ERROR_ESPACIO_YA_DESCUBIERTO) {
+      printf("you already open that\n");
+    } else if (status == ERROR_MINA_ENCONTRADA) {
+      printf("haha you lose\n");
+      deberiaMostrarMinas = 1;
+    }
   }
- }
-return 0;
+  return 0;
 }
