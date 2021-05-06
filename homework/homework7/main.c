@@ -26,8 +26,8 @@ int main()
     int option=0;
     while(exit==0){
         int limit;
-        limite=count();
-        printf("\n so we've %d registered workers\n", limite);
+        limit=count();
+        printf("\n so we've %d registered workers\n", limit);
         printf("FIRST YOU HAVE TO USE OPTION 3: REGISTER A WORKER, then you can do the rest*");
         printf("\nType\n1 To register an entery \n2 To register an exit\n3 To register a worker\n4 To finish\n");
         scanf("%d", &option);
