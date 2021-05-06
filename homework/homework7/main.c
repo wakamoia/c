@@ -15,7 +15,7 @@ int main()
     int a;
     int b;
     int temporalpin;
-    matrix = (int*)malloc(sizeof(int) * USUARIOS);
+    matrix= (int*)malloc(sizeof(int) * USUARIOS);
     for (a = 0; a < USUARIOS; a ++){
             matrix[a] = (int*)malloc(sizeof(int) * 6);
             for (b=0; b<6; b++){
@@ -70,14 +70,14 @@ int main()
             }
         }
         else if (option==3){
-            registered();
+            check();
         }
         else if (option==4){
             int flag=0;
             for (a=0; a<MAX; a++){
                 if(matrix[a][0]*matrix[a][1]*matrix[a][2]>0&&matrix[a][3]*matrix[a][4]*matrix[a][5]<0){
                     flag=-1; 
-                    printf("Error: User <%d> did not register an exit\n\n", i+1);
+                    printf("Error: User <%d> did not register an exit\n\n", a+1);
                 }
             }
             if (flag==0){
@@ -107,7 +107,7 @@ int count(){
     return count;
 }
 
-void registered(){
+void check(){
     int pin;
     pin=count()+1;
     char user[MAX];
@@ -136,7 +136,7 @@ void registered(){
     do {
         printf("\nEnter hour and minute to work (Use an space)\n");
         printf("like: 15 25\n");
-        scanf("%d %d", &hora, &min);
+        scanf("%d %d", &hour, &min);
     } while(hora<0||hora>23||min<0||min>60);
         
     do {
@@ -147,7 +147,7 @@ void registered(){
     
     FILE* writego = fopen("go.txt", "a");
     fprintf(writego, "%d %s %d %d %d %d %d %d %d %d %d %d\n",pin, user, sunday, monday, tuesday, wednesday, thursday, friday, saturday, hour, min, work);
-    fclose(writego;
+    fclose(writego);
 }
 
 void hiorbye(int pin, int estate){
@@ -180,7 +180,7 @@ void hiorbye(int pin, int estate){
     matrix[pin-1][4]=actualmin;
     matrix[pin-1][5]=actualsec;
     FILE* reporte = fopen("reporte.txt", "a");
-    if (totaldesalidas==0){
+    if (hiorbye==0){
         fprintf(reporte, "data generated the day: "); 
             switch(actualwdia){
                 case 0:
@@ -221,7 +221,7 @@ void hiorbye(int pin, int estate){
     matrix[pin-1][4]=-1;
     matrix[pin-1][5]=-1;
     
-    totaldesalidas=9; 
+    hiorbye (10); 
     }
 }
 void header(){
