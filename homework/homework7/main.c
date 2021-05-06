@@ -15,7 +15,7 @@ int main()
     int a;
     int b;
     int temporalpin;
-    matrix= (int*)malloc(sizeof(int) * USUARIOS);
+    matrix: (int*)malloc(sizeof(int) * USUARIOS);
     for (a = 0; a < USUARIOS; a ++){
             matrix[a] = (int*)malloc(sizeof(int) * 6);
             for (b=0; b<6; b++){
@@ -122,7 +122,7 @@ void check(){
     int min;
     int work;
     printf("New pin: <%d>\n", pin);
-    registrados++;
+    check++;
     printf("Type an username\n");
     scanf("%s", user);
     
@@ -137,7 +137,7 @@ void check(){
         printf("\nEnter hour and minute to work (Use an space)\n");
         printf("like: 15 25\n");
         scanf("%d %d", &hour, &min);
-    } while(hora<0||hora>23||min<0||min>60);
+    } while(hour<0||hour>23||min<0||min>60);
         
     do {
         printf("\nType how many seconds will you work? (numbers between 1 to 60)\n");
