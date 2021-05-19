@@ -38,8 +38,8 @@ int op = 2;
 
 	int cant;
 	
-	printf("hello there ms. doki and today im gonna help you to know if to find out if you are a covid infected or if you just have a flu\n");
-	printf("enter the data you are asked for such as age, weight, chronic diseases, these data are important for the final beedict\n");
+	printf("hello there I'm ms. doki and today im gonna help you to find out if you are a covid infected or if you just have a flu:D\n");
+	printf("enter the data you are asked for such as age, weight, chronic diseases; these data are important for the final beedict\n");
 	
 		printf("\ninsert how many users will take the test\n");
 		scanf("%i",&cant);
@@ -116,7 +116,7 @@ for(i=0; i<cant; i++)
 			 printf("\n%i covid syntoms\n", cont);
 		}	
 		
-		printf("\nintroduzca cuantos sintomas y enfermedades obtuvo al final, ejemplo: 6+9= 15 puntos ->");
+		printf("\nenter how many symptoms and diseases you got at the end, for example: 6+9 = 15 points ->");
 		int puntos;
 		scanf("%i",&puntos); 
 		for(i=0; i<user; i++){
@@ -125,7 +125,7 @@ for(i=0; i<cant; i++)
 		printf("user[%i]~ %s according to my calculations and thanks to the data entered, you have covid, you should go to a doctor\n\n \\\\\\\\COVID POSSITIVE//////",i , user[i].name);
 		}
 		else{
-				printf("FELICIDADES USER[%i]~ %s NO TIENES COVID! o bueno, eso parece...\n\n \\\\\\\\COVID NEGATIVE//////",i , user[i].name);
+				printf("CONGRATULATIONS USER[%i]- %s YOU DO NOT HAVE COVID! or well, that seems...\n\n \\\\\\\\COVID NEGATIVE//////",i , user[i].name);
 			} break;
 }
 	return 0;
