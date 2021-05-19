@@ -6,7 +6,7 @@
 #include <stdlib.h> 
 #include <ctype.h>
 
-struct user{ /* HERE IS A STRUCTURE FOR ALL THE USERS THAT COULD USE THIS TEST*/
+struct USER{ /* HERE IS A STRUCTURE FOR ALL THE USERS THAT COULD USE THIS TEST*/
 
 	char name[20];
 	int age;
@@ -15,7 +15,7 @@ struct user{ /* HERE IS A STRUCTURE FOR ALL THE USERS THAT COULD USE THIS TEST*/
 	int covis;
 	float height;
 }
-user[20];		
+user;		
 
 int main(){
 	
@@ -39,49 +39,43 @@ int op = 2;
 	{printf("...");
 		system("cls");
 	  printf("hello there! my name is Ms. Doki and today im gonna help you to find out if you are a covid infected or if you just have a flu:D!\n");
-	printf("enter the data you are asked for such as age, weight, chronic diseases, these data are important for the final beedict\n");
+	printf("enter the data you are asked for such as age, weight, chronic diseases, these data are important for the final beedict\n\n");
 
-		printf("\ninsert how many users will take the test\n");
-		scanf("%i",&cant);
-	system("cls");
-int i;
 
-for(i=0; i<cant; i++)
+{ fflush(stdin); /*HERE THE USERS DATA IS COLLECTED*/
+				printf("~ your name: ");
+	  		gets(user.name);	
 
-{ fflush(stdin); /*HERE THE USER'S DATA IS COLLECTED*/
-				printf("user[%d] ~ your name: ", i);
-	  		gets(user[i].name);	
-
-			printf("user[%i]  age: ", i); /*IF THE USER IS IN A HIGH OR VERY RISKY AGE RANGE, THEY WILL BE INFORMED*/
-			scanf("%i" ,&user[i].age); 
-				int age = user[i].age;
+			printf("~ age: "); /*IF THE USER IS IN A HIGH OR VERY RISKY AGE RANGE, THEY WILL BE INFORMED*/
+			scanf("%i" ,&user.age); 
+				int age = user.age;
 	if(age > 21&&age < 50){
-		puts("!!!ARE THE MOST INFECTED");
+		printf("!!!ARE THE MOST INFECTED");
 	}	
 	if(age > 51 )	{
-		puts("POPULATION ATE GREATEST RISCK,STAY ALERT!!");
+		printf("POPULATION ARE GREATEST RISCK,STAY ALERT!!\n");
 	}
 	
-	float h= user[i].height, w= user[i].weight, imc;	
-	printf("user[%i]  height: ", i);/*IF THE USER DOES NOT KNOW HOW TO GET THIS BMIES OUT THEN THEY CAN DO IT HERE*/
+	float h , w , imc;	
+	printf("~ height in metre: ");/*IF THE USER DOES NOT KNOW HOW TO GET THIS BMIES OUT THEN THEY CAN DO IT HERE*/
 			scanf("%f", &h);
-	printf("user[%i]  weight: ", i); 
+	printf("~ weight in kilogram: "); 
 			scanf("%f", &w);
 	 imc=(w/(h*h));	
 	printf("\t\t\t imc: %.1f", imc);	
 
 	if( imc<18.5){/*IF THE USER IS  LOW WEIGHT, OBESE OR OVERWEIGHT, THEY WILL BE INFORMED AS IT IS A FACTOR FOR COVID CONTAGION*/
-		printf("\nlow weight\n");
+		printf("\n<low weight>\n");
 	}
 		if(imc>=25&&imc<30)	{
-		printf("\noverweight, prone to covid\n");
+		printf("\n<overweight, prone to covid>\n");
 		}
 		if(imc>30)	{
-		printf("\nobesity, very prone to covid\n");
+		printf("\n<obesity, very prone to covid>\n");
 		}		
 			int issue, count=1, n, m;
-		printf("\n\nhow many of these diseases do you have?\nindicate it with numbers. example: 1234 or only <1> if you do not develop them \n>(2)diabetes,(3) obesity, (4)asthma, (5)adulthood<-\n");		
-				printf("user[%d] ~ issues:", i); /*CHRONIC DISEASES ARE A VERY IMPORTANT FACTOR IN COVID CONTAGION, SO IT'S IMPORTANT TO HAVE THESE DATA*/
+		printf("\nDISEASES\nhow many of these diseases do you have?\n\nindicate it with numbers. example: 1234 or only <1> if you do not develop them \n>(2)diabetes,(3) obesity, (4)asthma, (5)adulthood<-\n");		
+				printf(" ~ issues:"); /*CHRONIC DISEASES ARE A VERY IMPORTANT FACTOR IN COVID CONTAGION, SO IT IS IMPORTANT TO HAVE THESE DATA*/
 				scanf("\n%d", &issue);
 			while(issue >5)
 			{
@@ -97,7 +91,7 @@ for(i=0; i<cant; i++)
 			 
 		int covis, cont=1, a, b;	
 			
-		printf("\n how many of these symptoms do you present?\n");/*COVID SYMPTOMS ARE LISTED AND THE USER IS ASKED TO SPECIFY WHICH ONE THEY SUFFER FROM, THEN THEY ARE COUNTED*/
+		printf("\nCOVID\nhow many of these symptoms do you present?\n");/*COVID SYMPTOMS ARE LISTED AND THE USER IS ASKED TO SPECIFY WHICH ONE THEY SUFFER FROM, THEN THEY ARE COUNTED*/
 		
 		printf("\n1-Fever or chills");
 		printf("\n2-Nasal congestion or cough");
@@ -121,25 +115,31 @@ for(i=0; i<cant; i++)
 			
 			covis =b;
 			}
-			 printf("\n %i covid syntoms\n", cont);
+			 printf("\n%i covid syntoms\n", cont);
 		}	
 		/*THE USER IS ASKED TO ADD UP THEIR PREVIOUS POINTS SO THAT THEY CAN DECIDE WHETHER OR NOT COVID IS INFECTED*/
-		printf("\nenter how many symptoms and diseases you got at the end, for example: 6+9 = 15 points ->");
-		int puntos;
-		scanf("%i",&puntos); 
-		for(i=0; i<user; i++){
-		
+		printf("\nenter how many symptoms and diseases you got at the end\nfor example: 6 points of DISEASES + 9 points of COVID = 15 TOTAL POINTS\n");
+		int puntos, a, b;
+		{
+			printf("DISEASES POINTS: ");
+	scanf("%i",&a);
+	printf("COVID POINTS:");
+	scanf("%i",&b);
+	puntos= a+b;
+	rintf("%i TOTAL POINTS\n", puntos);	
+} 
 		if(puntos>=9){
 			system("cls");
-		printf("user[%i]~ %s according to my calculations and thanks to the data entered, you have covid, you should go to a doctor\n\n \\\\\\\\COVID POSSITIVE//////",i , user[i].name);
+		printf("%i TOTAL POINTS\n", puntos);	
+		printf(" %s according to my calculations and thanks to the data entered, you have covid, you should go to a doctor\n\n \\\\\\\\COVID POSSITIVE//////" , user.name);
 		}
 		else{system("cls");
-				printf("CONGRATULATIONS USER[%i]- %s YOU DO NOT HAVE COVID! or well, that seems...\n\n \\\\\\\\COVID NEGATIVE//////",i , user[i].name);
-			} break;
-}
+				printf("\nCONGRATULATIONS %s YOU DO NOT HAVE COVID! or well, that seems...\n\n \\\\\\\\COVID NEGATIVE//////", user.name);
+			}
+
 /*IN THE END THE USER IS ASKED IF THEY WANT TO USE THE TEST AGAIN AND IF NOT THEN ONLY A FAREWELL MESSAGE IS RETURNED*/
 printf("\ndo you want to take this test again?");
-printf("\n1-yes\n2-no\n");
+printf("\n1-yes\n2-no\n-->");
 scanf("%d", &qcaso);
 
 system("cls");
