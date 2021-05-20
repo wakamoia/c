@@ -1,9 +1,10 @@
-/*Name: Mr. Doki covid-test
+/*TO RUN THE PROGRAM YOU HAVE TO DO TWO FILES ONE WITH THE NAME function.h AND THEN THE PRINCIPAL FILE pia.c
+warning!!! for some reason the program can't run on online C copiler correctly, please use another website to run it.
+Description: this program can help you to know if waybe you have covid, a well-wearing test that you can use withoutleaving your home and with this you could go to the doctor and take care of your condition
+Name: Mr. Doki covid-test
 	Author: Patricia Sofia Moya Tobias
 	Date: 19/05/21 02:31
-	warning!!! for some reason the program can't run on online C copiler correctly, please use another website to run it.
-	Description: this program can help you yo know if waybe you have covid, a well-wearing test that you can use withoutleaving your home and with this you could go to the doctor and take care of your condition
-*/
+	*/
 
 #include <stdio.h>
 #include <string.h>
@@ -142,14 +143,4 @@ system("cls");
 printf("Thanks for use this test have a nice day;) !!!");
 
 	return 0;
-}
-
-
-void resultado(int points){
-	
-	int covid;
-if(points>=9){	
-  printf(" %s according to my calculations and thanks to the data entered, you have covid, you should go to a doctor\n\n \\\\\\\\COVID POSSITIVE//////" , user.name);
-}else
-	printf("\nCONGRATULATIONS %s YOU DO NOT HAVE COVID! or well, that seems...\n\n \\\\\\\\COVID NEGATIVE//////", user.name);
 }
