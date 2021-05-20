@@ -35,9 +35,9 @@ After counting if the user had more than 9 points then he was positive covid and
 
 Bibliography 
 ------------
-#C language programming | Repetitive structures | Program to ask if you want to repeat a. (2020, 10 June). [Video]. YouTube.`<link>` : <https://www.youtube.com/watch?v=adcKJUIJwoU> 
-#Advanced programming in C | Storing data within a | Exercise #5. (2017, 14 October). [Video]. YouTube. `<link>` : <https://www.youtube.com/watch?v=DvcOUVVJAfc>
-#20. Programming in C - Conditionals - Double selection if else. (2016, 25 February). [Video]. YouTube. `<link>` : <https://www.youtube.com/watch?v=NFhLFY4npQk>
-#C code for telling your body mass using the if cycle. (2015, 15 September). [Video]. YouTube. `<link>` : <https://www.youtube.com/watch?v=IlBnkmoMauw&t=236s>
-#Programming in c Exercise 18: The number of digits that a number of | Cycle while. (2018, 17 February). [Video]. YouTube. `<link>` : <https://www.youtube.com/watch?v=hVNoVW_Endw>
-#Programming in C - first program in c (sum of 2 numbers). (2012, 20 August). [Video]. YouTube. `<link>` : <https://www.youtube.com/watch?v=SfpypclfGPQ>
+*C language programming | Repetitive structures | Program to ask if you want to repeat a. (2020, 10 June). [Video]. YouTube.`<link>` : <https://www.youtube.com/watch?v=adcKJUIJwoU> 
+*Advanced programming in C | Storing data within a | Exercise #5. (2017, 14 October). [Video]. YouTube. `<link>` : <https://www.youtube.com/watch?v=DvcOUVVJAfc>
+*20. Programming in C - Conditionals - Double selection if else. (2016, 25 February). [Video]. YouTube. `<link>` : <https://www.youtube.com/watch?v=NFhLFY4npQk>
+*C code for telling your body mass using the if cycle. (2015, 15 September). [Video]. YouTube. `<link>` : <https://www.youtube.com/watch?v=IlBnkmoMauw&t=236s>
+*Programming in c Exercise 18: The number of digits that a number of | Cycle while. (2018, 17 February). [Video]. YouTube. `<link>` : <https://www.youtube.com/watch?v=hVNoVW_Endw>
+*Programming in C - first program in c (sum of 2 numbers). (2012, 20 August). [Video]. YouTube. `<link>` : <https://www.youtube.com/watch?v=SfpypclfGPQ>
