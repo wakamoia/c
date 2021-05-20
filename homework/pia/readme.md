@@ -18,7 +18,7 @@ The objective of this program is to facilitate the early detection of covid so t
 4. Finally, if the users whats to know the result of other person thay can because the program will ask if they want to close the program or run it again.
 
 REPORT
-~~~~~~~~
+-------
 The first thing I did was look for how to make a repetitive structure because I get very scrambled and did not know how to start it, use the Joaquin10 video where it explains how after running your program what you are going to do is ask the user if you want to close the program or run it again. 
 What I did was use a similar structure to ask the user if he were ready to start the test and already after running the entire program would be asked if he wanted to finish or perform the cycle again. When you ask the question and get an affirmative answer, you proceed to display the instructions and a section of data that must be entered for storage and use later, also use a structure for all the data to be directly related to the user.
 In Kevin Korduner's video presents us with a data warehouse for a student x where the grades of his subjects are obtained, what I did was do something similar only that the user does one user per round and does not make a simple data entry but from the data previously entered messages are displayed depending on the ranges that apply. 
@@ -28,9 +28,10 @@ Finally, the user is asked how many points he obtained in the two counts and the
 After counting if the user had more than 9 points then he was positive covid and was told, if he was otherwise minor then a negative message appeared to him. At the end of the respective message the user is asked again if they want to re-test or exit, if the answer is if then the program is run again, if the farewell is not simply shown and the program ends.
 
 Bibliography 
-C language programming | Repetitive structures | Program to ask if you want to repeat a. (2020, 10 June). [Video]. YouTube. https://www.youtube.com/watch?v=adcKJUIJwoU
-Advanced programming in C | Storing data within a | Exercise #5. (2017, 14 October). [Video]. YouTube.  https://www.youtube.com/watch?v=DvcOUVVJAfc
-20. Programming in C - Conditionals - Double selection if else. (2016, 25 February). [Video]. YouTube. https://www.youtube.com/watch?v=NFhLFY4npQk
-C code for telling your body mass using the if cycle. (2015, 15 September). [Video]. YouTube. https://www.youtube.com/watch?v=IlBnkmoMauw&t=236s
-Programming in c Exercise 18: The number of digits that a number of | Cycle while. (2018, 17 February). [Video]. YouTube. https://www.youtube.com/watch?v=hVNoVW_Endw
-Programming in C - first program in c (sum of 2 numbers). (2012, 20 August). [Video]. YouTube. https://www.youtube.com/watch?v=SfpypclfGPQ
+------------
+C language programming | Repetitive structures | Program to ask if you want to repeat a. (2020, 10 June). [Video]. YouTube.`<link>` : <https://www.youtube.com/watch?v=adcKJUIJwoU> 
+Advanced programming in C | Storing data within a | Exercise #5. (2017, 14 October). [Video]. YouTube. `<link>` : <https://www.youtube.com/watch?v=DvcOUVVJAfc>
+20. Programming in C - Conditionals - Double selection if else. (2016, 25 February). [Video]. YouTube. `<link>` : <https://www.youtube.com/watch?v=NFhLFY4npQk>
+C code for telling your body mass using the if cycle. (2015, 15 September). [Video]. YouTube. `<link>` : <https://www.youtube.com/watch?v=IlBnkmoMauw&t=236s>
+Programming in c Exercise 18: The number of digits that a number of | Cycle while. (2018, 17 February). [Video]. YouTube. `<link>` : <https://www.youtube.com/watch?v=hVNoVW_Endw>
+Programming in C - first program in c (sum of 2 numbers). (2012, 20 August). [Video]. YouTube. `<link>` : <https://www.youtube.com/watch?v=SfpypclfGPQ>
